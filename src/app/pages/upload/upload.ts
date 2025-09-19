@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActionLink } from '../../shared/action-link/action-link';
+import { SeoService } from '../../shared/seo.service';
 
 @Component({
   selector: 'app-upload',
@@ -7,4 +8,14 @@ import { ActionLink } from '../../shared/action-link/action-link';
   templateUrl: './upload.html',
   styleUrl: './upload.css',
 })
-export class Upload {}
+export class Upload implements OnInit {
+  constructor(private seo: SeoService) {}
+
+  ngOnInit() {
+    this.seo.setMeta(
+      'Upload',
+      'Upload CSV files to validate employee timesheets',
+      'timesheet, upload, csv, work log'
+    );
+  }
+}
