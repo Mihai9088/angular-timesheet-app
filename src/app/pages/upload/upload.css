@@ -1,0 +1,85 @@
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px - 40px);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.file-input {
+  margin: 1.5rem 0;
+}
+
+label[mat-raised-button] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+label[mat-raised-button]:hover {
+  background: #eef2ff;
+  transform: translateY(-2px);
+}
+
+.error-msg {
+  color: crimson;
+  margin-top: 0.5rem;
+}
+
+.preview-table {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.preview-table th.mat-header-cell {
+  font-weight: 600;
+  background: #f3f4f6;
+}
+
+.preview-table td.mat-cell,
+.preview-table th.mat-header-cell {
+  padding: 0.75rem 1rem;
+}
+
+@media (max-width: 768px) {
+  mat-card {
+    padding: 1.2rem;
+  }
+
+  label[mat-raised-button] {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .preview-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .preview-table th.mat-header-cell,
+  .preview-table td.mat-cell {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .validate-link app-action-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}

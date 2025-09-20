@@ -6,25 +6,31 @@
   <app-action-link label="Go to Upload" route="/upload"></app-action-link>
 </div>
 } @else {
-<p>
-  <mat-icon style="color: green">check_circle</mat-icon> Valid days: {{ validDays }} |
-  <mat-icon style="color: red">cancel</mat-icon> Invalid days: {{ invalidDays }}
-</p>
 
 <section class="summary-overview">
   <h2>Summary Overview</h2>
   <p>Total days: {{ totalDays }}</p>
-  <p><mat-icon style="color: green">check_circle</mat-icon> {{ validDays }}</p>
-  <p><mat-icon style="color: red">cancel</mat-icon> {{ invalidDays }}</p>
+  <div class="overview-cards">
+    <div class="card valid">
+      <mat-icon>check_circle</mat-icon>
+      <span>{{ validDays }} Valid days</span>
+    </div>
+    <div class="card invalid">
+      <mat-icon>cancel</mat-icon>
+      <span>{{ invalidDays }} Invalid days</span>
+    </div>
+  </div>
 </section>
 
 <div class="legend mat-elevation-z2">
   <h3>Legend</h3>
-  <p>
-    <mat-icon style="color: green">check_circle</mat-icon> Valid – No overlaps and ≤ 8 hours/day
+  <p class="icon-text">
+    <mat-icon style="color: green">check_circle</mat-icon>
+    Valid – No overlaps and ≤ 8 hours/day
   </p>
-  <p>
-    <mat-icon style="color: red">cancel</mat-icon> Invalid – Overlaps exist or total > 8 hours/day
+  <p class="icon-text">
+    <mat-icon style="color: red">cancel</mat-icon>
+    Invalid – Overlaps exist or total > 8 hours/day
   </p>
 </div>
 
@@ -34,40 +40,42 @@
     <mat-expansion-panel-header>
       <mat-panel-title> {{ r.date }} – {{ r.totalHours }} hours </mat-panel-title>
       <mat-panel-description>
-        Status: @if (r.isValid) {
-        <span> <mat-icon style="color: green">check_circle</mat-icon> Valid </span>
-        } @else {
-        <span> <mat-icon style="color: red">cancel</mat-icon> Invalid </span>
-        } @if (r.reason) {
-        <span style="margin-left: 10px; font-style: italic">({{ r.reason }})</span>
+        <span [ngClass]="r.isValid ? 'status-badge valid' : 'status-badge invalid'">
+          <mat-icon>{{ r.isValid ? 'check_circle' : 'cancel' }}</mat-icon>
+          {{ r.isValid ? 'Valid' : 'Invalid' }}
+        </span>
+        @if (r.reason) {
+        <span class="reason">({{ r.reason }})</span>
         }
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <table mat-table [dataSource]="r.entries" class="mat-elevation-z2">
-      <ng-container matColumnDef="desc">
-        <th mat-header-cell *matHeaderCellDef>Description</th>
-        <td mat-cell *matCellDef="let e">{{ e.description }}</td>
-      </ng-container>
+    <div class="table-scroll">
+      <table mat-table [dataSource]="r.entries" class="mat-elevation-z2">
+        <ng-container matColumnDef="desc">
+          <th mat-header-cell *matHeaderCellDef>Description</th>
+          <td mat-cell *matCellDef="let e">{{ e.description }}</td>
+        </ng-container>
 
-      <ng-container matColumnDef="start">
-        <th mat-header-cell *matHeaderCellDef>Start</th>
-        <td mat-cell *matCellDef="let e">{{ e.start | date : 'shortTime' }}</td>
-      </ng-container>
+        <ng-container matColumnDef="start">
+          <th mat-header-cell *matHeaderCellDef>Start</th>
+          <td mat-cell *matCellDef="let e">{{ e.start | date : 'shortTime' }}</td>
+        </ng-container>
 
-      <ng-container matColumnDef="end">
-        <th mat-header-cell *matHeaderCellDef>End</th>
-        <td mat-cell *matCellDef="let e">{{ e.end | date : 'shortTime' }}</td>
-      </ng-container>
+        <ng-container matColumnDef="end">
+          <th mat-header-cell *matHeaderCellDef>End</th>
+          <td mat-cell *matCellDef="let e">{{ e.end | date : 'shortTime' }}</td>
+        </ng-container>
 
-      <ng-container matColumnDef="duration">
-        <th mat-header-cell *matHeaderCellDef>Duration</th>
-        <td mat-cell *matCellDef="let e">{{ formatDuration(e.durationMs) }}</td>
-      </ng-container>
+        <ng-container matColumnDef="duration">
+          <th mat-header-cell *matHeaderCellDef>Duration</th>
+          <td mat-cell *matCellDef="let e">{{ formatDuration(e.durationMs) }}</td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="['desc', 'start', 'end', 'duration']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['desc', 'start', 'end', 'duration']"></tr>
-    </table>
+        <tr mat-header-row *matHeaderRowDef="['desc', 'start', 'end', 'duration']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['desc', 'start', 'end', 'duration']"></tr>
+      </table>
+    </div>
   </mat-expansion-panel>
   }
 </mat-accordion>

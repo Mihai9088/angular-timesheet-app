@@ -1,0 +1,33 @@
+.home-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(100vh - 120px);
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  color: white;
+  padding: 2rem;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.highlight {
+  color: #ffeb3b;
+  line-height: 1.4;
+}
+
+.hero-actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .hero-actions app-action-link {
+    width: 100%;
+    display: block;
+  }
+}

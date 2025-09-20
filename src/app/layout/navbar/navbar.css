@@ -1,0 +1,103 @@
+.sidenav-container.mat-drawer-container {
+  height: auto !important;
+  min-height: 0 !important;
+  box-sizing: border-box;
+  background: #f9fafb;
+}
+
+.sidenav {
+  width: 220px;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  padding-top: 8px;
+}
+
+mat-toolbar {
+  background: #fff;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.toolbar-title {
+  font-weight: 600;
+  color: #111827;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.menu-button {
+  display: none;
+  color: #374151;
+}
+
+@media (min-width: 769px) {
+  .desktop-nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .menu-button {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidenav-container.mat-drawer-container {
+    height: 100vh !important;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-button {
+    display: inline-flex;
+  }
+}
+
+.desktop-nav a {
+  color: #374151 !important;
+  font-weight: 500;
+  position: relative;
+  text-transform: none;
+  transition: color 0.2s;
+}
+
+.desktop-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.desktop-nav a:hover {
+  color: #1e3a8a !important;
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a.active::after {
+  width: 100%;
+}
+
+.sidenav a {
+  color: #374151 !important;
+  font-weight: 500;
+  padding: 12px 16px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidenav a:hover {
+  background: #f3f4f6;
+}
+
+.sidenav a.active {
+  font-weight: 600;
+  color: #1e3a8a !important;
+  background: #eef2ff;
+}

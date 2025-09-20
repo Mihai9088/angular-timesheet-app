@@ -4,14 +4,29 @@ import { ActionLink } from '../../shared/action-link/action-link';
 import { SeoService } from '../../shared/seo.service';
 import { DataService } from '../../shared/data.service';
 import { CsvRawRow, TimesheetEntry } from '../../shared/models/types';
-import { DatePipe, DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe, CommonModule } from '@angular/common';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [ActionLink, ActionLink, DatePipe, DecimalPipe],
   templateUrl: './upload.html',
-  styleUrl: './upload.css',
+  styleUrls: ['./upload.css'],
+  imports: [
+    CommonModule,
+    ActionLink,
+    DatePipe,
+    DecimalPipe,
+
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTableModule,
+  ],
 })
 export class Upload implements OnInit {
   preview: TimesheetEntry[] = [];

@@ -42,7 +42,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<app-action-link label=" Go to Summary" route="/summary"></app-action-link>
+<app-action-link label=" Go to Summary" routerLink="/summary"></app-action-link>
 } @else {
 <p>No data available. Please upload a CSV first.</p>
 <app-action-link label="⬅ Back to Upload" route="/upload"></app-action-link>
