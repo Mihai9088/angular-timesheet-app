@@ -58,6 +58,13 @@ td span mat-icon {
   font-size: 18px;
 }
 
+.status.valid {
+  color: green;
+}
+.status.invalid {
+  color: red;
+}
+
 p {
   margin-top: 1rem;
   color: #6b7280;
@@ -67,4 +74,14 @@ p {
 app-action-link {
   margin-top: 2rem;
   display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .table-wrapper {
+    max-width: 100%;
+  }
+
+  table {
+    min-width: 500px;
+  }
 }
