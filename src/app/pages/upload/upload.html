@@ -1,2 +1,33 @@
-<p>upload works!</p>
-<app-action-link label="Validate" route="/validate" />
+<h1>Upload CSV</h1>
+
+<input type="file" accept=".csv" (change)="onFileSelected($event)" />
+
+@if (errorMsg) {
+<p style="color: crimson; margin-top: 0.5rem">{{ errorMsg }}</p>
+} @if (preview.length) {
+<h3 style="margin-top: 1rem">Preview (first 10 rows)</h3>
+<table border="1" cellpadding="6">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (e of preview.slice(0,10); track e) {
+    <tr>
+      <td>{{ e.description }}</td>
+      <td>{{ e.start | date : 'yyyy-MM-dd HH:mm' }}</td>
+      <td>{{ e.end | date : 'yyyy-MM-dd HH:mm' }}</td>
+      <td>{{ e.durationMs / 60000 | number : '1.0-0' }} min</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<div style="margin-top: 1rem">
+  <app-action-link label="➡ Go to Validate" route="/validate"></app-action-link>
+</div>
+}
