@@ -19,6 +19,7 @@ type ValidationResult = {
   isValid: boolean;
   entries: TimesheetEntry[];
   reason: string;
+  entriesCount: number;
 };
 
 export type { CsvRawRow, TimesheetEntry, ValidationResult };

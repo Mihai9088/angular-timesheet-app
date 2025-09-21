@@ -19,7 +19,7 @@ export class Validate implements OnInit {
   private seo = inject(SeoService);
 
   results: ValidationResult[] = [];
-  displayedColumns = ['date', 'totalHours', 'status', 'reason'];
+  displayedColumns = ['date', 'totalHours', 'entriesCount', 'status', 'reason'];
 
   ngOnInit() {
     this.seo.setMeta('Validate | Timesheet App', 'Validate parsed CSV data', 'validate,timesheet');

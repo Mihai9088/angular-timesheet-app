@@ -78,6 +78,7 @@ export class DataService {
         isValid,
         reason,
         entries,
+        entriesCount: entries.length,
       });
     }
 
